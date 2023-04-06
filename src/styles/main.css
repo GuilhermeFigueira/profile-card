@@ -7,8 +7,18 @@
 }
 .background-images {
 	background-image: url("/bg-pattern-top.svg"), url("/bg-pattern-bottom.svg");
-	background-size: 55%, 55%;
-	background-position: -20% calc(0% - 500px), 120% calc(100% + 500px);
+	background-size: 58%, 58%;
+	background-position: calc(0% - 200px) calc(0% - 500px),
+		120% calc(100% + 500px);
 	background-repeat: no-repeat, no-repeat;
 	@apply bg-cyan;
+}
+h2 {
+	@apply text-blue-dark font-black text-xl;
+}
+footer span {
+	@apply text-xs text-gray tracking-widest;
+}
+section {
+	@apply flex flex-col items-center;
 }
