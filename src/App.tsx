@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
 	const [guilherme, setGuilherme] = useState(false);
+	const [repos, setRepos] = useState(Number);
+	const [followers, setFollowers] = useState(Number);
+	const [company, setCompany] = useState("");
+
 	let imgName = [
 		"/image-victor.jpg",
 		"https://github.com/guilhermefigueira.png",
@@ -10,6 +14,26 @@ function App() {
 	let age = ["26", "18"];
 	let city = ["London", "São Paulo"];
 
+	useEffect(() => {
+		fetch("https://api.github.com/users/guilhermefigueira")
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+				setData(data);
+			});
+	}, []);
+
+	interface setDataProps {
+		public_repos: number;
+		followers: number;
+		company: string;
+	}
+
+	const setData = ({ public_repos, followers, company }: setDataProps) => {
+		setRepos(public_repos);
+		setFollowers(followers);
+		setCompany(company);
+	};
 	return (
 		<div className="h-screen w-screen flex flex-col justify-center items-center background-images">
 			<main className="flex flex-col m-auto items-center bg-white w-[22rem] h-[25rem] rounded-2xl shadow-2xl ">
@@ -37,16 +61,43 @@ function App() {
 				</header>
 				<footer className="flex flex-row justify-around w-full px-6 py-7 border-t-[1px] border-gray/60">
 					<section>
-						<h2>80K</h2>
-						<span>Followers</span>
+						{guilherme ? (
+							<>
+								<h2>80K</h2>
+								<span>Followers</span>
+							</>
+						) : (
+							<>
+								<h2>{repos}</h2>
+								<span>Repositories</span>
+							</>
+						)}
 					</section>
 					<section>
-						<h2>803K </h2>
-						<span>Likes</span>
+						{guilherme ? (
+							<>
+								<h2>80K </h2>
+								<span>Likes</span>
+							</>
+						) : (
+							<>
+								<h2>{followers}</h2>
+								<span>Followers</span>
+							</>
+						)}
 					</section>
 					<section>
-						<h2>1.4K</h2>
-						<span>Photos</span>
+						{guilherme ? (
+							<>
+								<h2>1.4K</h2>
+								<span>Photos</span>
+							</>
+						) : (
+							<>
+								<h2>{company}</h2>
+								<span>Company</span>
+							</>
+						)}
 					</section>
 				</footer>
 			</main>
