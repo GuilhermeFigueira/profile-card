@@ -13,6 +13,13 @@
 	background-repeat: no-repeat, no-repeat;
 	@apply bg-cyan;
 }
+@media (max-width: 500px) {
+	.background-images {
+		background-position: calc(0% - 400px) calc(0% - 250px),
+			calc(100% + 400px) calc(100% + 250px);
+		background-size: 150%, 150%;
+	}
+}
 h2 {
 	@apply text-blue-dark font-black text-xl;
 }
