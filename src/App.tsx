@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 function App() {
-	const [guilherme, setGuilherme] = useState(false);
+	const [guilherme, setGuilherme] = useState(true);
 	const [repos, setRepos] = useState(Number);
 	const [followers, setFollowers] = useState(Number);
 	const [company, setCompany] = useState("");
